@@ -12,8 +12,7 @@ export default {
   reporters: ['default', ['github-actions', { silent: false }], 'summary'],
   collectCoverageFrom: ['lib/**/*.js'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
-  coverageDirectory: '<rootDir>/coverage',
-  transform: {}
+  coverageDirectory: '<rootDir>/coverage'
 }
 
 /**
