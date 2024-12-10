@@ -10,12 +10,10 @@ export default {
   watchPathIgnorePatterns: ['globalConfig'],
   testMatch: ['**/lib/**/*.test.js'],
   reporters: ['default', ['github-actions', { silent: false }], 'summary'],
-  collectCoverageFrom: ['src/**/*.js'],
-  coveragePathIgnorePatterns: [
-    '<rootDir>/node_modules/',
-    '<rootDir>/src/__fixtures__'
-  ],
-  coverageDirectory: '<rootDir>/coverage'
+  collectCoverageFrom: ['lib/**/*.js'],
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
+  coverageDirectory: '<rootDir>/coverage',
+  transform: {}
 }
 
 /**
