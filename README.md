@@ -10,6 +10,7 @@ Once registered if an HTTP request is received with a specific tracking header t
 A helper function `getTraceId()` provides access to the value of the tracking header without having to pass the request object across multiple calls.
 
 ## What this does not do.
+
 - Automatically forwards the trace ID to other HTTP calls.
 - Automatically logs the trace ID.
 
@@ -27,6 +28,7 @@ The library consists of two parts:
 2. The `getTraceId()` and `withTraceId` helpers
 
 ### Register the plugin
+
 As part of creating the server, register the hapi-tracing plugin.
 
 ```js
@@ -41,6 +43,7 @@ await server.register({
 Once registered you will be able to call `getTraceId()` inside your controllers to return the value of the header if it has been passed in.
 
 For example:
+
 ```js
 import { getTraceId } from '@defra/hapi-tracing'
 
@@ -124,4 +127,3 @@ const logger = pino(loggerOptions)
 ```
 
 This will set the traceId to appear in the `trace.id` field in the structure logs.
-
