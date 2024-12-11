@@ -1,8 +1,5 @@
 const { NODE_ENV } = process.env
 
-/**
- * @type {TransformOptions}
- */
 module.exports = {
   browserslistEnv: 'node',
   presets: [
@@ -15,7 +12,3 @@ module.exports = {
     ]
   ]
 }
-
-/**
- * @import { TransformOptions } from '@babel/core'
- */
