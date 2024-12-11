@@ -12,8 +12,8 @@
     "format": "prettier --write \"lib/**/*.js\" \"**/*.{js,cjs,md,json,config.js,test.js}\"",
     "format:check": "prettier --check \"lib/**/*.js\" \"**/*.{js,cjs,md,json,config.js,test.js}\""
   },
-  "author": "",
-  "license": "OGL",
+  "author": "Defra DDTS",
+  "license": "OGL-UK-3.0",
   "devDependencies": {
     "@babel/preset-env": "7.26.0",
     "@hapi/hapi": "^21.3.12",
