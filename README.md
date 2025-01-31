@@ -3,6 +3,16 @@
 Hapi Tracing is a Hapi plugin to make selected headers available during the lifecycle of the request without having to manually pass them or the request object into every call.
 The main use-case for this is for propagating tracing headers, allowing them to be logged as well as forwarded on in other calls.
 
+- [What this does do.](#what-this-does-do)
+- [What this does not do.](#what-this-does-not-do)
+- [Installing](#installing)
+- [Usage](#usage)
+  - [Register the plugin](#register-the-plugin)
+- [Common Use-Cases](#common-use-cases)
+  - [Propagating headers.](#propagating-headers)
+  - [Logging the header](#logging-the-header)
+- [Jest Transform Ignore Patterns](#jest-transform-ignore-patterns)
+
 ## What this does do.
 
 Hapi Tracing is registered as a plugin. A specific tracing header should be supplied via the plugin's options.
@@ -127,3 +137,23 @@ const logger = pino(loggerOptions)
 ```
 
 This will set the traceId to appear in the `trace.id` field in the structure logs.
+
+## Jest Transform Ignore Patterns
+
+Jest automatically transpiles all code it uses in its tests. This can cause issues when a dependency only supports ESM modules, and you use it in your tests. If this is the case you may need to add the following to your Jest configuration to prevent Jest transpiling the module with Babel in your tests.
+For more detailed information have a read of https://jestjs.io/docs/configuration#transformignorepatterns-arraystring
+
+> [!TIP]
+> If you need to add this configuration, typically you will see the error `SyntaxError: Cannot use import statement outside a module` when running Jest tests.
+
+Add the following to your Jest configuration in `jest.config.js`:
+```json
+...
+transformIgnorePatterns: [
+  `node_modules/(?!${[
+    '@defra/hapi-tracing', // Dependency supports ESM only so we do not wish to transpile it in our tests. It's already ready to go
+    'node-fetch' // v3 of Node-fetch supports ESM only so we do not wish to transpile it in our tests. It's already ready to go
+  ].join('|')}/)`
+]
+...
+```
