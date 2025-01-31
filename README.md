@@ -146,6 +146,7 @@ For more detailed information have a read of https://jestjs.io/docs/configuratio
 > [!TIP]
 > If you need to add this configuration, typically you will see the error `SyntaxError: Cannot use import statement outside a module` when running Jest tests.
 
+Add the following to your Jest configuration in `jest.config.js`:
 ```json
 ...
 transformIgnorePatterns: [
